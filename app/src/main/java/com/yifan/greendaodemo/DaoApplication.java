@@ -9,13 +9,22 @@ import com.yifan.greendaodemo.database.DataBaseManager;
  */
 public class DaoApplication extends Application {
 
-    public static DaoApplication mInstance;
+    /**
+     * 全局单例模式
+     */
+    private static DaoApplication mInstance;
+
+    /**
+     * 是否为开发调试状态
+     */
+    public static final boolean DEBUG = false;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-        DataBaseManager.getInstance();
+        //初始化数据库管理
+        DataBaseManager.getInstance().init();
     }
 
     public static DaoApplication getInstance() {
